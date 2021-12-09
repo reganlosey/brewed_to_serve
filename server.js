@@ -11,6 +11,8 @@ app.locals.title = 'Brews Galore'
 //Confirm server is running:
 app.get('/', (req, res) => {
   res.send('Grind So Fine')
+  console.log('REQUEST<><>',req.params)
+  console.log('RESPONSE<><>', res.params)
 });
 
 //Console.log for confirmation
@@ -24,195 +26,213 @@ app.get('/api/v1/brews', (req, res) => {
   res.json(brews)
 })
 
+//Send a single brew upon visit
+app.get('/api/v1/brews/:id', (req, res) => {
+  const brewId = req.params.id
+  const foundBrew = app.locals.brews.find(brew => brew['ProductId'] === brewId)
+
+  if(!foundBrew){
+    return brewId
+  }
+  res.json(foundBrew)
+})
+
+
+//POST data here :
+app.post('/api/v1/brews', (req, res) => {
+  const id = Date.now()
+  const brew = req.body;
+  console.log(brew)
+})
 
 
 
 app.locals.brews =
   [
     {
-      "ProductId": 1,
-      "Product": "Amaretto",
-      "Product_Type": "Coffee",
-      "Type": "Regular"
+      id: 1,
+      productName: "Amaretto",
+      type: "Coffee",
+      hasCaffeine: true
     },
     {
-      "ProductId": 2,
-      "Product": "Columbian",
-      "Product_Type": "Coffee",
-      "Type": "Regular"
+      id: 2,
+      productName: "Columbian",
+      type: "Coffee",
+      hasCaffeine: true
     },
     {
-      "ProductId": 3,
-      "Product": "Decaf Irish Cream",
-      "Product_Type": "Coffee",
-      "Type": "Decaf"
+      id: 3,
+      productName: "Decaf Irish Cream",
+      type: "Coffee",
+      hasCaffeine: false
     },
     {
-      "ProductId": 4,
-      "Product": "Caffe Latte",
-      "Product_Type": "Espresso",
-      "Type": "Regular"
+      id: 4,
+      productName: "Caffe Latte",
+      type: "Espresso",
+      hasCaffeine: true
     },
     {
-      "ProductId": 5,
-      "Product": "Caffe Mocha",
-      "Product_Type": "Espresso",
-      "Type": "Regular"
+      id: 5,
+      productName: "Caffe Mocha",
+      type: "Espresso",
+      hasCaffeine: true
     },
     {
-      "ProductId": 6,
-      "Product": "Decaf Espresso",
-      "Product_Type": "Espresso",
-      "Type": "Decaf"
+      id: 6,
+      productName: "Decaf Espresso",
+      type: "Espresso",
+      hasCaffeine: false
     },
     {
-      "ProductId": 7,
-      "Product": "Regular Espresso",
-      "Product_Type": "Espresso",
-      "Type": "Regular"
+      id: 7,
+      productName: "Regular Espresso",
+      type: "Espresso",
+      hasCaffeine: true
     },
     {
-      "ProductId": 8,
-      "Product": "Chamomile",
-      "Product_Type": "Herbal Tea",
-      "Type": "Decaf"
+      id: 8,
+      productName: "Chamomile",
+      type: "Herbal Tea",
+      hasCaffeine: false
     },
     {
-      "ProductId": 9,
-      "Product": "Lemon",
-      "Product_Type": "Herbal Tea",
-      "Type": "Decaf"
+      id: 9,
+      productName: "Lemon",
+      type: "Herbal Tea",
+      hasCaffeine: false
     },
     {
-      "ProductId": 10,
-      "Product": "Mint",
-      "Product_Type": "Herbal Tea",
-      "Type": "Decaf"
+      id: 10,
+      productName: "Mint",
+      type: "Herbal Tea",
+      hasCaffeine: false
     },
     {
-      "ProductId": 11,
-      "Product": "Darjeeling",
-      "Product_Type": "Tea",
-      "Type": "Regular"
+      id: 11,
+      productName: "Darjeeling",
+      type: "Tea",
+      hasCaffeine: true
     },
     {
-      "ProductId": 12,
-      "Product": "Earl Grey",
-      "Product_Type": "Tea",
-      "Type": "Regular"
+      id: 12,
+      productName: "Earl Grey",
+      type: "Tea",
+      hasCaffeine: true
     },
     {
-      "ProductId": 13,
-      "Product": "Chai Tea",
-      "Product_Type": "Tea",
-      "Type": "Regular"
+      id: 13,
+      productName: "Chai Tea",
+      type: "Tea",
+      hasCaffeine: true
     },
     {
-      "ProductId": 14,
-      "Product": "Lavender",
-      "Product_Type": "Tea",
-      "Type": "Decaf"
+      id: 14,
+      productName: "Lavender",
+      type: "Tea",
+      hasCaffeine: false
     },
     {
-      "ProductId": 15,
-      "Product": "Peppermint Tea",
-      "Product_Type": "Tea",
-      "Type": "Decaf"
+      id: 15,
+      productName: "Peppermint Tea",
+      type: "Tea",
+      hasCaffeine: false
     },
     {
-      "ProductId": 16,
-      "Product": "Valerian Root Tea",
-      "Product_Type": "Tea",
-      "Type": "Decaf"
+      id: 16,
+      productName: "Valerian Root Tea",
+      type: "Tea",
+      hasCaffeine: false
     },
     {
-      "ProductId": 17,
-      "Product": "Cuban",
-      "Product_Type": "Coffee",
-      "Type": "Regular"
+      id: 17,
+      productName: "Cuban",
+      type: "Coffee",
+      hasCaffeine: true
     },
     {
-      "ProductId": 18,
-      "Product": "Peruvian ",
-      "Product_Type": "Coffee",
-      "Type": "Regular"
+      id: 18,
+      productName: "Peruvian ",
+      type: "Coffee",
+      hasCaffeine: true
     },
     {
-      "ProductId": 18,
-      "Product": "Americano",
-      "Product_Type": "Espresso",
-      "Type": "Regular"
+      id: 18,
+      productName: "Americano",
+      type: "Espresso",
+      hasCaffeine: true
     },
     {
-      "ProductId": 19,
-      "Product": "English Breakfast",
-      "Product_Type": "Tea",
-      "Type": "Decaf"
+      id: 19,
+      productName: "English Breakfast",
+      type: "Tea",
+      hasCaffeine: false
     },
     {
-      "ProductId": 20,
-      "Product": "Jasmine",
-      "Product_Type": "Tea",
-      "Type": "Decaf"
+      id: 20,
+      productName: "Jasmine",
+      type: "Tea",
+      hasCaffeine: false
     },
     {
-      "ProductId": 21,
-      "Product": "Oolong",
-      "Product_Type": "Tea",
-      "Type": "Decaf"
+      id: 21,
+      productName: "Oolong",
+      type: "Tea",
+      hasCaffeine: false
     },
     {
-      "ProductId": 22,
-      "Product": "Passionflower",
-      "Product_Type": "Tea",
-      "Type": "Decaf"
+      id: 22,
+      productName: "Passionflower",
+      type: "Tea",
+      hasCaffeine: false
     },
     {
-      "ProductId": 23,
-      "Product": "Ginger",
-      "Product_Type": "Tea",
-      "Type": "Decaf"
+      id: 23,
+      productName: "Ginger",
+      type: "Tea",
+      hasCaffeine: false
     },
     {
-      "ProductId": 24,
-      "Product": "Yerba Mate",
-      "Product_Type": "Tea",
-      "Type": "Regular"
+      id: 24,
+      productName: "Yerba Mate",
+      type: "Tea",
+      hasCaffeine: true
     },
     {
-      "ProductId": 25,
-      "Product": "White Tea",
-      "Product_Type": "Tea",
-      "Type": "Decaf"
+      id: 25,
+      productName: "White Tea",
+      type: "Tea",
+      hasCaffeine: false
     },
     {
-      "ProductId": 26,
-      "Product": "Hibiscus",
-      "Product_Type": "Tea",
-      "Type": "Decaf"
+      id: 26,
+      productName: "Hibiscus",
+      type: "Tea",
+      hasCaffeine: false
     },
     {
-      "ProductId": 27,
-      "Product": "Blueberry",
-      "Product_Type": "Tea",
-      "Type": "Decaf"
+      id: 27,
+      productName: "Blueberry",
+      type: "Tea",
+      hasCaffeine: false
     },
     {
-      "ProductId": 28,
-      "Product": "Vanilla",
-      "Product_Type": "Tea",
-      "Type": "Decaf"
+      id: 28,
+      productName: "Vanilla",
+      type: "Tea",
+      hasCaffeine: false
     },
     {
-      "ProductId": 29,
-      "Product": "Spiced Apple",
-      "Product_Type": "Tea",
-      "Type": "Decaf"
+      id: 29,
+      productName: "Spiced Apple",
+      type: "Tea",
+      hasCaffeine: false
     },
     {
-      "ProductId": 30,
-      "Product": "Blood Orange",
-      "Product_Type": "Tea",
-      "Type": "Decaf"
+      id: 30,
+      productName: "Blood Orange",
+      type: "Tea",
+      hasCaffeine: false
     }
   ]

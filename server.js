@@ -3,10 +3,18 @@ const app = express();
 
 app.use(express.json())
 
-
 app.set('port', process.env.PORT || 3000);
-app.locals.title = 'Colors Galore'
-app.locals.colors = 
+app.locals.title = 'Brews Galore'
+
+app.get('/', (req, res) => {
+  res.send('Grind So Fine')
+});
+
+app.listen(app.get('port'), () => {
+  console.log(`${app.locals.title} is running on http://localhost:${app.get('port')}.`);
+});
+
+app.locals.brews = 
 [
   {
     "ProductId": 1,

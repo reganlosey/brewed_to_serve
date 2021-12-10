@@ -11,7 +11,7 @@ app.locals.title = 'Brews Galore'
 //Confirm server is running:
 app.get('/', (req, res) => {
   res.send('Grind So Fine')
-  console.log('REQUEST<><>',req.params)
+  console.log('REQUEST<><>', req.params)
   console.log('RESPONSE<><>', res.params)
 });
 
@@ -28,28 +28,38 @@ app.get('/api/v1/brews', (req, res) => {
 
 // Send a single brew upon visit
 app.get('/api/v1/brews/:id', (req, res) => {
-  console.log(typeof req.params.id)
-  const brewId  = req.params.id
+  const brewId = req.params.id
   const allBrews = app.locals.brews
-  console.log(typeof brewId)
   const foundBrew = allBrews.find(brew => brew.id === brewId)
-  console.log(foundBrew)
-
-  if(!foundBrew){
+  console.log(req, res)
+  if (!foundBrew) {
     return res.send(req.params.id)
   }
   res.status(200).json(foundBrew)
+
 })
 
 
-// //POST data here :
-// app.post('/api/v1/brews', (req, res) => {
-//   const id = Date.now()
-//   const brew = req.body;
-//   console.log(brew)
-// })
+//POST data here :
+app.post('/api/v1/brews', (req, res) => {
+  const id = Date.now()
+  const brew = req.body;
+  console.log(brew)
 
-
+  for (let requiredParameter of ['productName', 'type']) {
+    if (!brew[requiredParameter]) {
+      res
+        .status(422)
+        .send({
+          error: `Expected format: {name: <String>, type: <String>}. You\'re missing a "${requiredParameter}" property.
+    `})
+    }
+  }
+  const { productName, type} = brew;
+  app.locals.brews.push({ productName, type, id})
+  res.status(201).json({productName, type, id})
+  console.log(req, res)
+})
 
 app.locals.brews =
   [

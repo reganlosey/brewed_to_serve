@@ -1,15 +1,32 @@
 {
   "name": "express_urself",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "mocha": "^9.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reganlosey/coffee_server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/reganlosey/coffee_server/issues"
+  },
+  "homepage": "https://github.com/reganlosey/coffee_server#readme",
+  "description": ""
 }

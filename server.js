@@ -1,18 +1,17 @@
-const { response } = require('express');
+const { res } = require('express');
 const express = require('express');
 const app = express();
 
 app.use(express.json())
 
-app.set('port', process.env.PORT || 3001);
+app.set('port', process.env.PORT || 8001);
 app.locals.title = 'Brews Galore'
 
 
 //Confirm server is running:
 app.get('/', (req, res) => {
-  res.send('Grind So Fine')
-  console.log('REQUEST<><>', req.params)
-  console.log('RESPONSE<><>', res.params)
+  res.send('REQUEST MADE TO API')
+  console.log('REQUEST MADE TO API')
 });
 
 //Console.log for confirmation
@@ -33,7 +32,7 @@ app.get('/api/v1/brews/:id', (req, res) => {
   const foundBrew = allBrews.find(brew => brew.id === brewId)
   console.log(req, res)
   if (!foundBrew) {
-    return res.send(req.params.id)
+    return res.send(`Error: No brew with id of ${brewId} found.`)
   }
   res.status(200).json(foundBrew)
 
@@ -42,8 +41,8 @@ app.get('/api/v1/brews/:id', (req, res) => {
 
 //POST data here :
 app.post('/api/v1/brews', (req, res) => {
-  const id = Date.now()
   const brew = req.body;
+  const id = brew.id + 1
   console.log(brew)
 
   for (let requiredParameter of ['productName', 'type']) {
@@ -55,9 +54,13 @@ app.post('/api/v1/brews', (req, res) => {
     `})
     }
   }
-  const { productName, type } = brew;
-  app.locals.brews.push({ productName, type, id })
-  res.status(201).json({ productName, type, id })
+  const { productName, type, price, hasCaffeine } = brew;
+  app.locals.brews.push({ id, productName, type, price, hasCaffeine })
+  // res.status(201).json({ id, productName, type, price, hasCaffeine })
+  res.json({
+    status: 201,
+    result:'Welcome to brews galore'
+  })
   console.log(req, res)
 })
 
@@ -281,3 +284,5 @@ app.locals.brews =
     hasCaffeine: false
   }
 ]
+
+module.exports = app;

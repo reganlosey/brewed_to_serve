@@ -29,12 +29,13 @@ app.get('/api/v1/brews', (req, res) => {
 app.get('/api/v1/brews/:id', (req, res) => {
   const brewId = req.params.id
   const allBrews = app.locals.brews
-  const foundBrew = allBrews.find(brew => brew.id === brewId)
-  console.log(req, res)
+  const foundBrew = allBrews.find(brew => brew.id === parseInt(brewId))
+  // console.log(req, res)
   if (!foundBrew) {
     return res.send(`Error: No brew with id of ${brewId} found.`)
   }
   res.status(200).json(foundBrew)
+  return foundBrew
 
 })
 
@@ -61,7 +62,7 @@ app.post('/api/v1/brews', (req, res) => {
     status: 201,
     result:'Welcome to brews galore'
   })
-  console.log(req, res)
+  // console.log(req, res)
 })
 
 app.locals.brews =

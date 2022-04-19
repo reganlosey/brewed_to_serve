@@ -57,11 +57,11 @@ app.post('/api/v1/brews', (req, res) => {
   }
   const { productName, type, price, hasCaffeine } = brew;
   app.locals.brews.push({ id, productName, type, price, hasCaffeine })
-  // res.status(201).json({ id, productName, type, price, hasCaffeine })
-  res.json({
-    status: 201,
-    result:'Welcome to brews galore'
-  })
+  res.status(201).json({ id, productName, type, price, hasCaffeine })
+  // res.json({
+  //   status: 201,
+  //   result:'Welcome to brews galore'
+  // })
   // console.log(req, res)
 })
 

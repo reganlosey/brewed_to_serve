@@ -48,8 +48,9 @@ describe('Coffee Server', () => {
         res.body.should.have.property('productName').eq('Chai')
         res.body.should.have.property('type').eq('Tea');
         res.body.should.have.property('price').eq(10);
-        res.body.should.have.property('hasCaffeine').eq(true); 
+        res.body.should.have.property('hasCaffeine').eq(true);
       })
-      done()
+    done()
   })
+
 })

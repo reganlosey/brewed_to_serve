@@ -1,6 +1,8 @@
 const fetch = require('node-fetch');
 const express = require('express');
 const app = express();
+const NodeCache = require('node-cache');
+const cache = new NodeCache()
 
 app.use(express.json())
 
@@ -19,10 +21,30 @@ app.listen(app.get('port'), () => {
 });
 
 //Send all brews upon visit
-app.get('/api/v1/brews', (req, res) => {
-  const brews = app.locals.brews
-  res.json(brews)
+app.get('/api/v1/brews', async (req, res) => {
+  const storedBrews = cache.get('allBrews')
+  if (storedBrews) {
+    res.send(storedBrews)
+  } else {
+    const resp = await fetch('https://api.sampleapis.com/coffee/hot')
+    const respJson = await resp.json()
+    if (resp.ok) {
+      const newBrews = respJson.map((brew) => {
+        const newBrew = {
+          id: app.locals.brews.length + 1,
+          productName: brew['title'],
+          type: 'Coffee',
+          price: 10,
+          hasCaffeine: true
+        }
+        app.locals.brews.push(newBrew)
+        cache.set('allBrews', app.locals.brews)
+      })
+      res.send(app.locals.brews)
+    }
+  }
 })
+
 
 // Send a single brew upon visit
 app.get('/api/v1/brews/:id', (req, res) => {
@@ -63,23 +85,7 @@ app.post('/api/v1/brews', (req, res) => {
   }
 })
 
-app.get('/api/v1/newBrews', async (req, res) => {
-  const resp = await fetch('https://api.sampleapis.com/coffee/hot')
-  const respJson = await resp.json()
-  if (resp.ok) {
-    const newBrews = respJson.map((brew) => {
-      const newBrew = {
-        id: app.locals.brews.length + 1,
-        productName: brew['title'],
-        type: 'Coffee',
-        price: 10,
-        hasCaffeine: true
-      }
-      app.locals.brews.push(newBrew)
-    })
-    res.send(app.locals.brews)
-  }
-})
+
 
 app.locals.brews =
   [

@@ -1,4 +1,4 @@
-const { res } = require('express');
+const fetch = require('node-fetch');
 const express = require('express');
 const app = express();
 
@@ -55,11 +55,29 @@ app.post('/api/v1/brews', (req, res) => {
     }
   }
   if (brewError) {
-    res.status(404).send({error: `Brew with productName ${brewError.productName} already exists`})
+    res.status(404).send({ error: `Brew with productName ${brewError.productName} already exists` })
   } else {
     const { productName, type, price, hasCaffeine } = brew;
     app.locals.brews.push({ id, productName, type, price, hasCaffeine })
     res.status(201).json({ id, productName, type, price, hasCaffeine })
+  }
+})
+
+app.get('/api/v1/newBrews', async (req, res) => {
+  const resp = await fetch('https://api.sampleapis.com/coffee/hot')
+  const respJson = await resp.json()
+  if (resp.ok) {
+    const newBrews = respJson.map((brew) => {
+      const newBrew = {
+        id: app.locals.brews.length + 1,
+        productName: brew['title'],
+        type: 'Coffee',
+        price: 10,
+        hasCaffeine: true
+      }
+      app.locals.brews.push(newBrew)
+    })
+    res.send(app.locals.brews)
   }
 })
 

@@ -52,5 +52,14 @@ describe('Coffee Server', () => {
       })
     done()
   })
+  it('should be able to fetch and return data from external API', (done) => {
+    chai.request(server)
+    .get('/api/v1/newBrews')
+    .end((err, res) => {
+      res.should.have.status(200);
+      res.should.be.a('object');
+    })
+    done()
+  })
 
 })

@@ -2,17 +2,21 @@ const fetch = require('node-fetch');
 const express = require('express');
 const app = express();
 const NodeCache = require('node-cache');
-const cache = new NodeCache()
+const cache = new NodeCache();
+const cors = require('cors');
+const path = require('path');
 
-app.use(express.json())
+
+app.use(express.json());
+app.use(cors());
 
 app.set('port', process.env.PORT || 8001);
-app.locals.title = 'Brews Galore'
+app.locals.title = 'Brewed To Serve(r)'
 
 
 //Confirm server is running:
 app.get('/', (req, res) => {
-  res.send('REQUEST MADE TO API')
+  res.sendFile(path.join(__dirname, '/index.html'))
 });
 
 //Console.log for confirmation
@@ -47,7 +51,7 @@ app.get('/api/v1/brews', async (req, res) => {
 
 
 // Send a single brew upon visit
-app.get('/api/v1/brews/:id', (req, res) => {
+app.get('brews/:id', (req, res) => {
   const brewId = req.params.id
   const allBrews = app.locals.brews
   const foundBrew = allBrews.find(brew => brew.id === parseInt(brewId))
@@ -63,7 +67,7 @@ app.get('/api/v1/brews/:id', (req, res) => {
 
 
 //POST data here :
-app.post('/api/v1/brews', (req, res) => {
+app.post('brews', (req, res) => {
   const brew = req.body;
   const id = brew.id + 1
   const brewError = app.locals.brews.find(localBrew => localBrew.productName === brew.productName)

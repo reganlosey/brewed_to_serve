@@ -25,7 +25,7 @@ app.listen(app.get('port'), () => {
 });
 
 //Send all brews upon visit
-app.get('/api/v1/brews', async (req, res) => {
+app.get('/brews', async (req, res) => {
   const storedBrews = cache.get('allBrews')
   if (storedBrews) {
     res.send(storedBrews)

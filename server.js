@@ -51,7 +51,7 @@ app.get('/brews', async (req, res) => {
 
 
 // Send a single brew upon visit
-app.get('brews/:id', (req, res) => {
+app.get('/brews/:id', (req, res) => {
   const brewId = req.params.id
   const allBrews = app.locals.brews
   const foundBrew = allBrews.find(brew => brew.id === parseInt(brewId))
@@ -67,7 +67,7 @@ app.get('brews/:id', (req, res) => {
 
 
 //POST data here :
-app.post('brews', (req, res) => {
+app.post('/brews', (req, res) => {
   const brew = req.body;
   const id = brew.id + 1
   const brewError = app.locals.brews.find(localBrew => localBrew.productName === brew.productName)

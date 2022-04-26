@@ -116,7 +116,7 @@ app.locals.brews =
     },
     {
       id: 4,
-      productName: '',
+      productName: 'Cappucino',
       type: 'Espresso',
       price: 10,
       hasCaffeine: true

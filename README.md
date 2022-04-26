@@ -1,6 +1,6 @@
 # ☕  Brewed To Serve 🍵
 ...get it?
-<sup style="font-size:8px">because it's a server and has info about brewed drinks? I thought it was funny</sup>
+<sup style="font-size:5px">because it's a server and has info about brewed drinks? I thought it was funny</sup>
 
 <br>
 

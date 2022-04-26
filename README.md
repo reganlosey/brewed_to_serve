@@ -1,14 +1,25 @@
 # ☕  Brewed To Serve 🍵
+
 ...get it?
 <sup style="font-size:5px">because it's a server and has info about brewed drinks? I thought it was funny</sup>
 
 <br>
-
 <br>
+
 
 #### Brewed to Serve is an API built with NodeJs and Express.js to host a variety of coffee and tea data.
 #### The application was built as an opportunity for me to practice my abilities in Backend Development. 
 <br>
+
+
+### Contributors: 
+
+[Regan Losey](https://github.com/reganlosey)
+
+
+### Technologies Used:
+<img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white"/>
+<img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white"/>
 
 ## Available endpoints: 
 

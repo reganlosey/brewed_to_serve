@@ -88,6 +88,9 @@ Example response:
 `POST /brews/`
 
 Returns a 201 status code. If there is an issue with creating the brew, a 400 level status code will be returned with a description of the issue.
+
+<strong> Note: I am currently requiring an API key to be present in order to POST to the API. If you'd like access, please feel free to reach out to me at reganloseydev@gmail.com :) </strong>
+
 ```
 Content-Type: application/json
 Accept: application/json
@@ -103,7 +106,7 @@ Accept: application/json
 <br>
 
 ### Future Iterations:
-1. Store posted brews in database.
+1. Implement database.
 2. Expand information included in each object. (Ex: ingredients and description of each beverage, images, etc.)
 
 

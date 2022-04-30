@@ -1,6 +1,36 @@
-body{
-  background-image: url('https://i.giphy.com/media/ensk0C4ba77m8KBWoA/giphy.webp');
-  /* background-repeat: no-repeat; */
-  /* background-size: contain; */
+html {
+  height: 100%;
 }
 
+body {
+  font-family: 'Raleway', sans-serif;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+.text-container {
+  border: 2px solid mediumspringgreen;
+  /* width: 50%; */
+  align-self: flex-start;
+}
+
+.main-container {
+  background-image: url("https://i.giphy.com/media/ensk0C4ba77m8KBWoA/giphy.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+
+}
+
+.gif-container {
+  width: 50%;
+  float: right;
+
+}
+
+.gif {
+  height: 100%;
+  width: auto;
+}

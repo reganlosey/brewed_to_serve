@@ -5,21 +5,38 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./styles.css"><link>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400&display=swap" rel="stylesheet">
   <title>Brewed To Serve(r)</title>
 </head>
 
 <body>
   <h1>Hey friend!</h1>
-  <p>Thanks for visiting my API</p>
-  <p>This server hosts a variety of coffee and tea objects</p>
-  <ul>The endpoints are:
-    <li>GET: <a href="https://brewedtoserve.herokuapp.com/brews" target="_blank" rel="noreferrer">/brews</a>. Returns an array of all coffee and tea objects</li>
-    <li>GET: /brews/:id. (Where <strong>id</strong> is the id of an object in the array) Returns a coffee/tea object with matching id</li>
-    <li>POST: /brews</li>
-  </ul>
-  <p>There is currently no database in place to save POST requests. I'm working on it, but I'm a frontend dev and still learning about all this cool backend stuff:)</p>
-  <p>If you have any issues or suggestions, please feel free to contact me at reganloseydev@gmail.com</p>
+  <section class="main-container">
+    <article class="text-container">
+      <p>Thanks for visiting my API</p>
+      <p>This server hosts a variety of coffee and tea objects</p>
+      <ul>The endpoints are:
+        <li>GET: <a href="https://brewedtoserve.herokuapp.com/brews" target="_blank" rel="noreferrer">/brews</a>.
+          Returns
+          an
+          array of all coffee and tea objects</li>
+        <li>GET: /brews/:id. (Where <strong>id</strong> is the id of an object in the array) Returns a coffee/tea object
+          with matching id</li>
+        <li>POST: /brews</li>
+      </ul>
+      <p>There is currently no database in place to save POST requests. I'm working on it, but I'm a frontend dev and
+        still
+        learning about all this cool backend stuff:)</p>
+      <p>If you have any issues or suggestions, please feel free to contact me at reganloseydev@gmail.com</p>
+    </article>
+    <!-- <div class="gif-container">
+      <img class="gif"
+        src="https://i.giphy.com/media/ensk0C4ba77m8KBWoA/giphy.webp" />
+    </div> -->
+  </section>
 </body>
 
 </html>

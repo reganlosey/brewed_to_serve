@@ -5,10 +5,19 @@ const NodeCache = require('node-cache');
 const cache = new NodeCache();
 const cors = require('cors');
 const path = require('path');
-
+const { v4: uuidv4 } = require('uuid');
+uuidv4();
+require('dotenv').config();
 
 app.use(express.json());
 app.use(cors());
+
+// Enable CORS for all routes and for specific API-Key header
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, API-Key')
+  next()
+})
 
 app.set('port', process.env.PORT || 8001);
 app.locals.title = 'Brewed To Serve(r)'
@@ -19,13 +28,14 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, './src/index.html'))
 });
 
-//Serves all files in 'ui' folder
+//Serve all files in 'ui' folder
 app.use(express.static(path.join(__dirname, 'src')))
 
-//Console.log for confirmation
+//Console.log for confirmation that server is running
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on http://localhost:${app.get('port')}.`);
 });
+
 
 //Send all brews upon visit
 app.get('/brews', async (req, res) => {
@@ -53,6 +63,8 @@ app.get('/brews', async (req, res) => {
 })
 
 
+
+
 // Send a single brew upon visit
 app.get('/brews/:id', (req, res) => {
   const brewId = req.params.id
@@ -70,11 +82,20 @@ app.get('/brews/:id', (req, res) => {
 
 })
 
+// PROTECT ALL ROUTES THAT FOLLOW
+app.use((req, res, next) => {
+  const apiKey = req.get('API-key')
+  if (!apiKey || apiKey !== process.env.API_KEY) {
+    res.status(401).json({ error: "Hey there. I'm currently disallowing POST requests. If you'd like access, please email me to discuss your usage:) " })
+  } else {
+    next()
+  }
+})
 
-//POST data here :
+//POST data here, if authorized API key is present:
 app.post('/brews', (req, res) => {
   const brew = req.body;
-  const id = brew.id + 1
+  const id = uuidv4()
   const brewError = app.locals.brews.find(localBrew => localBrew.productName === brew.productName)
   for (let requiredParameter of ['productName', 'type']) {
     if (!brew[requiredParameter]) {
@@ -82,39 +103,21 @@ app.post('/brews', (req, res) => {
         .status(422)
         .send({
           error: `Expected format: {name: <String>, type: <String>}. You\'re missing a "${requiredParameter}" property.
-    `
+        `
         })
     }
   }
   if (brewError) {
-    res.status(404).send({
+    res.status(422).send({
       error: `Brew with productName ${brewError.productName} already exists`
     })
   } else {
-    const {
-      productName,
-      type,
-      price,
-      hasCaffeine
-    } = brew;
-    app.locals.brews.push({
-      id,
-      productName,
-      type,
-      price,
-      hasCaffeine
-    })
-    res.status(201).json({
-      id,
-      productName,
-      type,
-      price,
-      hasCaffeine
-    })
+    const { productName, type, price, hasCaffeine } = brew;
+    app.locals.brews.push({ id, productName, type, price, hasCaffeine })
+    res.status(201).json({ id, productName, type, price, hasCaffeine })
+
   }
 })
-
-
 
 app.locals.brews = [{
   id: 1,

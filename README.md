@@ -1,4 +1,4 @@
-# [☕  Brewed To Serve 🍵](https://brewedtoserve.herokuapp.com/brews)
+# [☕  Brewed To Serve 🍵](https://brewedtoserve.herokuapp.com/)
 
 ...get it?
 <sup style="font-size:5px">because it's a server and has info about brewed drinks? I thought it was funny</sup>

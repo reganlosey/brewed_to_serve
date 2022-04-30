@@ -85,7 +85,6 @@ app.get('/brews/:id', (req, res) => {
 // PROTECT ALL ROUTES THAT FOLLOW
 app.use((req, res, next) => {
   const apiKey = req.get('API-key')
-  console.log(apiKey)
   if (!apiKey || apiKey !== process.env.API_KEY) {
     res.status(401).json({ error: "Hey there. I'm currently disallowing POST requests. If you'd like access, please email me to discuss your usage:) " })
   } else {

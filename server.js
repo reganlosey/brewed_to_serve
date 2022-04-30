@@ -91,26 +91,9 @@ app.post('/brews', (req, res) => {
       error: `Brew with productName ${brewError.productName} already exists`
     })
   } else {
-    const {
-      productName,
-      type,
-      price,
-      hasCaffeine
-    } = brew;
-    app.locals.brews.push({
-      id,
-      productName,
-      type,
-      price,
-      hasCaffeine
-    })
-    res.status(201).json({
-      id,
-      productName,
-      type,
-      price,
-      hasCaffeine
-    })
+    const { productName, type, price, hasCaffeine } = brew;
+    app.locals.brews.push({ id, productName, type, price, hasCaffeine })
+    res.status(201).json({ id, productName, type, price, hasCaffeine })
   }
 })
 

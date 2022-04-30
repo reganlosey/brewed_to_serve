@@ -14,7 +14,8 @@
     "dotenv": "^16.0.0",
     "express": "^4.17.1",
     "node-cache": "^5.1.2",
-    "node-fetch": "^2.6.7"
+    "node-fetch": "^2.6.7",
+    "request": "^2.88.2"
   },
   "directories": {
     "test": "test"

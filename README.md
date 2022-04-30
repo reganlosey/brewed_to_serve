@@ -6,16 +6,14 @@
 <br>
 <br>
 
-### Overview:
-Brewed to Serve is an API built with Node and Express.js to host a variety of coffee and tea data.
+<h2 style="text-decoration: underline">Overview:</h2>
+
+[Brewed to Serve](https://brewedtoserve.herokuapp.com/) is an API built with Node and Express.js to host a variety of coffee and tea data.
 This was a super fun side project and a great opportunity for me to practice my abilities writing backend Javascript.
 I'd had some experience creating an API for a group project when I was in school but I enjoyed the challenge of writing one myself and having a lot of creative freedom.
+
 <br>
 
-
-### Contributors: 
-
-[Regan Losey](https://github.com/reganlosey)
 
 
 ### Technologies Used:
@@ -27,8 +25,9 @@ I'd had some experience creating an API for a group project when I was in school
 The base path to access the API is:
 
 ```
-https://brewedtoserve.herokuapp.com/
+https://brewedtoserve.herokuapp.com/{query}
 ```
+Where `query` is replaced with one of the following endpoints:
 
 ### Get all brews
 
@@ -104,6 +103,10 @@ Accept: application/json
 ```
 
 <br>
+
+### Contributors: 
+[Regan Losey](https://github.com/reganlosey)
+
 
 ### Future Iterations:
 1. Implement database.

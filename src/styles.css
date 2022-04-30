@@ -1,36 +1,74 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
   height: 100%;
 }
 
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 300;
   width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-
-.text-container {
-  border: 2px solid mediumspringgreen;
-  /* width: 50%; */
-  align-self: flex-start;
+  height: 100%;
+  min-height: 100%;
+  background-color: #f6eed4;
 }
 
 .main-container {
-  background-image: url("https://i.giphy.com/media/ensk0C4ba77m8KBWoA/giphy.webp");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: auto;
-
+  line-height: 1.6;
+  margin: 1rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content:space-around;
 }
 
-.gif-container {
-  width: 50%;
-  float: right;
-
+.text-container {
+  width: 60%;
 }
 
-.gif {
-  height: 100%;
-  width: auto;
+header{
+  text-align: center;
+  padding: .5rem;
+  line-height: 1.3;
+}
+
+
+h1 {
+  font-size: 2.35em;
+  text-align: center;
+  font-weight: 300;
+}
+
+h2,
+h3 {
+  font-weight: 300;
+  font-size: 1.35rem;
+}
+h4{
+  font-size:1.3rem;
+  font-weight: bold;
+  text-decoration:underline;
+  margin-bottom:.5rem;
+  
+}
+
+.method-txt {
+  font-weight: 500;
+  text-decoration:underline;
+  font-size: 1.2rem;
+}
+
+.method-desc {
+  margin-left: 50px;
+}
+
+.bottom-txt{
+  padding: 2rem 0rem;
+  width: 75%;
+}
+
+img{
+  height: 35rem;
+  width:auto;
 }

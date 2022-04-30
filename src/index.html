@@ -5,37 +5,40 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./reset.css">
   <link rel="stylesheet" href="./styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet">
   <title>Brewed To Serve(r)</title>
 </head>
 
 <body>
-  <h1>Hey friend!</h1>
+  <header>
+    <h1>Hey there brew-tiful!</h1>
+    <h2>Thanks for visiting my API</h2>
+    <h3>It serves a variety of coffee and tea data</h3>
+  </header>
   <section class="main-container">
     <article class="text-container">
-      <p>Thanks for visiting my API</p>
-      <p>This server hosts a variety of coffee and tea objects</p>
-      <ul>The endpoints are:
-        <li>GET: <a href="https://brewedtoserve.herokuapp.com/brews" target="_blank" rel="noreferrer">/brews</a>.
-          Returns
-          an
-          array of all coffee and tea objects</li>
-        <li>GET: /brews/:id. (Where <strong>id</strong> is the id of an object in the array) Returns a coffee/tea object
-          with matching id</li>
-        <li>POST: /brews</li>
-      </ul>
-      <p>There is currently no database in place to save POST requests. I'm working on it, but I'm a frontend dev and
-        still
-        learning about all this cool backend stuff:)</p>
-      <p>If you have any issues or suggestions, please feel free to contact me at reganloseydev@gmail.com</p>
+      <h4>Available Endpoints:</h4>
+      <p class="method-txt">GET: <a href="https://brewedtoserve.herokuapp.com/brews" target="_blank"
+          rel="noreferrer">/brews</a>.</p>
+      <p class="method-desc">Returns an array of objects containing tea and coffee information</p>
+      <p class="method-txt">GET: /brews/:id</p>
+      <p class="method-desc">(Where <strong>id</strong> is the id of an object in the array)
+        Returns a single brew that matches the matches the provided ID. If no objects match the given ID, a 404 status
+        code and error message will be returned.</p>
+      <p class="method-txt">POST: /brews</p>
+      <p class="method-desc">Returns a 201 status code. If there is an issue with creating the brew, a 400 level status code will be returned with a description of the issue.</p>
+      <div class="bottom-txt">There is currently no database in place to save POST requests(but they work in Postman!).
+        I'm working on
+        it, but I'm a frontend dev and still learning about all this cool backend stuff:)
+        If you have any issues or suggestions, please feel free to contact me at reganloseydev@gmail.com
+      </div>
     </article>
-    <!-- <div class="gif-container">
-      <img class="gif"
-        src="https://i.giphy.com/media/ensk0C4ba77m8KBWoA/giphy.webp" />
-    </div> -->
+    <img
+      src="https://media3.giphy.com/media/xUPGcyuPRNjODvvOFO/giphy.gif?cid=ecf05e47frjouw5lohlffu3hnn50glll7h7lnua7ssmm4b2d&rid=giphy.gif&ct=g" />
   </section>
 </body>
 

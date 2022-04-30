@@ -8,7 +8,7 @@
 
 
 Brewed to Serve is an API built with NodeJs and Express.js to host a variety of coffee and tea data.
-The application was built as an opportunity for me to practice my abilities in Backend Development. 
+This was a super fun side project and a great opportunity for me to practice my abilities writing backend Javascript.
 <br>
 
 
@@ -103,7 +103,7 @@ Accept: application/json
 
 ### Future Iterations:
 1. Store posted brews in database.
-2. Expand information included in each object. (Ex: ingredients and description of each beverage)
+2. Expand information included in each object. (Ex: ingredients and description of each beverage, images, etc.)
 
 
 ### Resources: 

@@ -5,7 +5,8 @@ const NodeCache = require('node-cache');
 const cache = new NodeCache();
 const cors = require('cors');
 const path = require('path');
-const request = require('request');
+const {v4: uuidv4} = require('uuid');
+uuidv4();
 require('dotenv').config();
 
 app.use(express.json());
@@ -95,8 +96,8 @@ app.use((req, res, next) => {
 //POST data here :
 app.post('/brews', (req, res) => {
   const brew = req.body;
-  const id = brew.id + 1
-  const brewError = app.locals.brews.find(localBrew => localBrew.id === brew.id)
+  const id = uuidv4()
+  const brewError = app.locals.brews.find(localBrew => localBrew.productName === brew.productName)
   for (let requiredParameter of ['productName', 'type']) {
     if (!brew[requiredParameter]) {
       res
@@ -109,7 +110,7 @@ app.post('/brews', (req, res) => {
   }
   if (brewError) {
     res.status(422).send({
-      error: `Brew with id of ${brewError.id} already exists`
+      error: `Brew with id of ${brewError.productName} already exists`
     })
   } else {
     const { productName, type, price, hasCaffeine } = brew;

@@ -8,6 +8,7 @@
 
 
 Brewed to Serve is an API built with NodeJs and Express.js to host a variety of coffee and tea data.
+
 This was a super fun side project and a great opportunity for me to practice my abilities writing backend Javascript.
 <br>
 

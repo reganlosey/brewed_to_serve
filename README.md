@@ -26,12 +26,8 @@ The application was built as an opportunity for me to practice my abilities in B
 The base path to access the API is:
 
 ```
-https://brewedtoserve.herokuapp.com/{query}
+https://brewedtoserve.herokuapp.com/
 ```
-<br>
-Where `query` should be replaced with one of the following endpoints:
-
-<br>
 
 ### Get all brews
 

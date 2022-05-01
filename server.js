@@ -82,6 +82,13 @@ app.get('/brews/:id', (req, res) => {
 
 })
 
+//Send error on visit to any undefined routes
+app.all('*', (req, res) => {
+  res.status(404).send({
+    error: `404: Route not found`
+  })
+})
+
 // PROTECT ALL ROUTES THAT FOLLOW
 app.use((req, res, next) => {
   const apiKey = req.get('API-key')
@@ -118,6 +125,7 @@ app.post('/brews', (req, res) => {
 
   }
 })
+
 
 app.locals.brews = [{
   id: 1,

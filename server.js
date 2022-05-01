@@ -62,9 +62,6 @@ app.get('/brews', async (req, res) => {
   }
 })
 
-
-
-
 // Send a single brew upon visit
 app.get('/brews/:id', (req, res) => {
   const brewId = req.params.id
@@ -93,7 +90,8 @@ app.get('*', (req, res) => {
 app.use((req, res, next) => {
   const apiKey = req.get('API-key')
   if (!apiKey || apiKey !== process.env.API_KEY) {
-    res.status(401).json({ error: "Hey there. I'm currently disallowing POST requests. If you'd like access, please email me to discuss your usage:) " })
+    res.status(401)
+    res.json({ error: "Howdy🤠 I'm currently disallowing POST requests. If you'd like access, please email me to discuss your usage :) " })
   } else {
     next()
   }

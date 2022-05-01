@@ -83,7 +83,7 @@ app.get('/brews/:id', (req, res) => {
 })
 
 //Send error on visit to any undefined routes
-app.all('*', (req, res) => {
+app.get('*', (req, res) => {
   res.status(404).send({
     error: `404: Route not found`
   })

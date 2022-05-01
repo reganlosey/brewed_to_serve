@@ -22,7 +22,6 @@ app.use(function (req, res, next) {
 app.set('port', process.env.PORT || 8001);
 app.locals.title = 'Brewed To Serve(r)'
 
-
 //Confirm server is running:
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, './src/index.html'))
@@ -40,6 +39,8 @@ app.listen(app.get('port'), () => {
 //Send all brews upon visit
 app.get('/brews', async (req, res) => {
   const storedBrews = cache.get('allBrews')
+  console.log(res.locals)
+  console.log(app.locals)
   if (storedBrews) {
     res.send(storedBrews)
   } else {
@@ -90,8 +91,9 @@ app.get('*', (req, res) => {
 app.use((req, res, next) => {
   const apiKey = req.get('API-key')
   if (!apiKey || apiKey !== process.env.API_KEY) {
-    res.status(401)
-    res.json({ error: "Howdy🤠 I'm currently disallowing POST requests. If you'd like access, please email me to discuss your usage :) " })
+    res
+      .status(401).
+      json({ error: "Howdy🤠 I'm currently disallowing POST requests. If you'd like access, please email me to discuss your usage :) " })
   } else {
     next()
   }
@@ -246,7 +248,7 @@ app.locals.brews = [{
 },
 {
   id: 18,
-  productName: 'Peruvian ',
+  productName: 'Peruvian',
   type: 'Coffee',
   price: 10,
   hasCaffeine: true
@@ -330,14 +332,14 @@ app.locals.brews = [{
 },
 {
   id: 30,
-  productName: 'Spiced Apple',
+  productName: 'Blood Orange',
   type: 'Tea',
   price: 10,
   hasCaffeine: false
 },
 {
   id: 31,
-  productName: 'Blood Orange',
+  productName: 'Spiced Apple',
   type: 'Tea',
   price: 10,
   hasCaffeine: false

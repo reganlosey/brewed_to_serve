@@ -42,22 +42,8 @@ app.get('/brews', async (req, res) => {
   if (storedBrews) {
     res.send(storedBrews)
   } else {
-    const resp = await fetch('https://api.sampleapis.com/coffee/hot')
-    const respJson = await resp.json()
-    if (resp.ok) {
-      const newBrews = respJson.map((brew) => {
-        const newBrew = {
-          id: app.locals.brews.length + 1,
-          productName: brew['title'],
-          type: 'Coffee',
-          price: 10,
-          hasCaffeine: true
-        }
-        app.locals.brews.push(newBrew)
-        cache.set('allBrews', app.locals.brews)
-      })
-      res.send(app.locals.brews)
-    }
+    cache.set('allBrews', app.locals.brews)
+    res.send(app.locals.brews)
   }
 })
 

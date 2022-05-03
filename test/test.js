@@ -30,6 +30,24 @@ describe('Coffee Server', () => {
       })
   })
 
+  it('should be able to POST a new object if API key is present', (done) => {
+    const brewId = Date.now();
+    chai.request(server)
+      .post("/brews")
+      .set('API-key', process.env.API_KEY)
+      .send({
+        'id': brewId,
+        'productName': 'Chai',
+        'type': 'Tea',
+        'price': 10,
+        'hasCaffeine': true
+      })
+      .end((err, res) => {
+        res.should.have.status(201);
+      })
+    done()
+  })
+
   it('should NOT be able to POST a new brew without the correct API key present', (done) => {
     const brewId = Date.now();
     chai.request(server)
@@ -49,34 +67,5 @@ describe('Coffee Server', () => {
       })
     done()
   })
-  it('should be able to POST a new object if all parameters are present', (done) => {
-    const brewId = Date.now();
-    chai.request(server)
-      .post("/brews")
-      .set('API-key', process.env.API_KEY)
-      .send({
-        'id': brewId,
-        'productName': 'Chai',
-        'type': 'Tea',
-        'price': 10,
-        'hasCaffeine': true
-      })
-      .end((err, res) => {
-        res.should.have.status(201);
-      })
-      done()
-  })
-
-
-  it('should be able to fetch and return data from external API', (done) => {
-    chai.request(server)
-      .get('/brews')
-      .end((err, res) => {
-        res.should.have.status(200);
-        res.should.be.a('object');
-      })
-    done()
-  })
-
 
 })

@@ -39,8 +39,6 @@ app.listen(app.get('port'), () => {
 //Send all brews upon visit
 app.get('/brews', async (req, res) => {
   const storedBrews = cache.get('allBrews')
-  console.log(res.locals)
-  console.log(app.locals)
   if (storedBrews) {
     res.send(storedBrews)
   } else {

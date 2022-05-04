@@ -162,21 +162,21 @@ app.locals.brews = [
   {
     id: 8,
     productName: 'Chamomile',
-    type: 'Herbal Tea',
+    type: 'Tea',
     price: 10,
     hasCaffeine: false
   },
   {
     id: 9,
     productName: 'Lemon',
-    type: 'Herbal Tea',
+    type: 'Tea',
     price: 10,
     hasCaffeine: false
   },
   {
     id: 10,
     productName: 'Mint',
-    type: 'Herbal Tea',
+    type: 'Tea',
     price: 10,
     hasCaffeine: false
   },

@@ -5,8 +5,6 @@ const NodeCache = require('node-cache');
 const cache = new NodeCache();
 const cors = require('cors');
 const path = require('path');
-const { v4: uuidv4 } = require('uuid');
-uuidv4();
 require('dotenv').config();
 
 app.use(express.json());
@@ -86,18 +84,18 @@ app.use((req, res, next) => {
 //POST data here, if authorized API key is present:
 app.post('/brews', (req, res) => {
   const brew = req.body;
-  const id = uuidv4()
+  const id = Math.ceil(Math.random() * Date.now())
   const brewError = app.locals.brews.find(localBrew => localBrew.productName === brew.productName)
-  for (let requiredParameter of ['productName', 'type']) {
+  for (let requiredParameter of ['productName', 'type', 'price']) {
     if (!brew[requiredParameter]) {
       res
         .status(422)
         .send({
-          error: `Expected format: {name: <String>, type: <String>}. You\'re missing a "${requiredParameter}" property.
+          error: `Expected format: {productName: <String>, type: <String>, price: <String>}. You\'re missing a "${requiredParameter}" property.
         `
         })
+      }
     }
-  }
   if (brewError) {
     res.status(422).send({
       error: `Brew with productName ${brewError.productName} already exists`
@@ -111,223 +109,225 @@ app.post('/brews', (req, res) => {
 })
 
 
-app.locals.brews = [{
-  id: 1,
-  productName: 'Amaretto',
-  type: 'Coffee',
-  price: 10,
-  hasCaffeine: true
-},
-{
-  id: 2,
-  productName: 'Columbian',
-  type: 'Coffee',
-  price: 10,
-  hasCaffeine: true
-},
-{
-  id: 3,
-  productName: 'Peruvian',
-  type: 'Coffee',
-  price: 10,
-  hasCaffeine: false
-},
-{
-  id: 4,
-  productName: 'Cappucino',
-  type: 'Espresso',
-  price: 10,
-  hasCaffeine: true
-},
-{
-  id: 5,
-  productName: 'Caffe Mocha',
-  type: 'Espresso',
-  price: 10,
-  hasCaffeine: true
-},
-{
-  id: 6,
-  productName: 'Decaf Espresso',
-  type: 'Espresso',
-  price: 10,
-  hasCaffeine: false
-},
-{
-  id: 7,
-  productName: 'Regular Espresso',
-  type: 'Espresso',
-  price: 10,
-  hasCaffeine: true
-},
-{
-  id: 8,
-  productName: 'Chamomile',
-  type: 'Herbal Tea',
-  price: 10,
-  hasCaffeine: false
-},
-{
-  id: 9,
-  productName: 'Lemon',
-  type: 'Herbal Tea',
-  price: 10,
-  hasCaffeine: false
-},
-{
-  id: 10,
-  productName: 'Mint',
-  type: 'Herbal Tea',
-  price: 10,
-  hasCaffeine: false
-},
-{
-  id: 11,
-  productName: 'Darjeeling',
-  type: 'Tea',
-  price: 10,
-  hasCaffeine: true
-},
-{
-  id: 12,
-  productName: 'Earl Grey',
-  type: 'Tea',
-  price: 10,
-  hasCaffeine: true
-},
-{
-  id: 13,
-  productName: 'Chai Tea',
-  type: 'Tea',
-  price: 10,
-  hasCaffeine: true
-},
-{
-  id: 14,
-  productName: 'Lavender',
-  type: 'Tea',
-  price: 10,
-  hasCaffeine: false
-},
-{
-  id: 15,
-  productName: 'Peppermint Tea',
-  type: 'Tea',
-  price: 10,
-  hasCaffeine: false
-},
-{
-  id: 16,
-  productName: 'Valerian Root Tea',
-  type: 'Tea',
-  price: 10,
-  hasCaffeine: false
-},
-{
-  id: 17,
-  productName: 'Cuban',
-  type: 'Coffee',
-  price: 10,
-  hasCaffeine: true
-},
-{
-  id: 18,
-  productName: 'Peruvian',
-  type: 'Coffee',
-  price: 10,
-  hasCaffeine: true
-},
-{
-  id: 19,
-  productName: 'Americano',
-  type: 'Espresso',
-  price: 10,
-  hasCaffeine: true
-},
-{
-  id: 20,
-  productName: 'English Breakfast',
-  type: 'Tea',
-  price: 10,
-  hasCaffeine: false
-},
-{
-  id: 21,
-  productName: 'Jasmine',
-  type: 'Tea',
-  price: 10,
-  hasCaffeine: false
-},
-{
-  id: 22,
-  productName: 'Oolong',
-  type: 'Tea',
-  price: 10,
-  hasCaffeine: false
-},
-{
-  id: 23,
-  productName: 'Passionflower',
-  type: 'Tea',
-  price: 10,
-  hasCaffeine: false
-},
-{
-  id: 24,
-  productName: 'Ginger',
-  type: 'Tea',
-  price: 10,
-  hasCaffeine: false
-},
-{
-  id: 25,
-  productName: 'Yerba Mate',
-  type: 'Tea',
-  price: 10,
-  hasCaffeine: true
-},
-{
-  id: 26,
-  productName: 'White Tea',
-  type: 'Tea',
-  price: 10,
-  hasCaffeine: false
-},
-{
-  id: 27,
-  productName: 'Hibiscus',
-  type: 'Tea',
-  price: 10,
-  hasCaffeine: false
-},
-{
-  id: 28,
-  productName: 'Blueberry',
-  type: 'Tea',
-  price: 10,
-  hasCaffeine: false
-},
-{
-  id: 29,
-  productName: 'Vanilla',
-  type: 'Tea',
-  price: 10,
-  hasCaffeine: false
-},
-{
-  id: 30,
-  productName: 'Blood Orange',
-  type: 'Tea',
-  price: 10,
-  hasCaffeine: false
-},
-{
-  id: 31,
-  productName: 'Spiced Apple',
-  type: 'Tea',
-  price: 10,
-  hasCaffeine: false
-}
+app.locals.brews = [
+  {
+    id: 1,
+    productName: 'Brazilian Arabica',
+    type: 'Coffee',
+    price: '$10/lb',
+    hasCaffeine: true
+  },
+  {
+    id: 2,
+    productName: 'Columbian Arabica',
+    type: 'Coffee',
+    price: '$10/lb',
+    hasCaffeine: true
+  },
+  {
+    id: 3,
+    productName: 'Peruvian Arabica',
+    type: 'Coffee',
+    price: '$10/lb',
+    hasCaffeine: false
+  },
+  {
+    id: 4,
+    productName: 'Vietnam Robusta',
+    type: 'Espresso',
+    price: '$15/lb',
+    hasCaffeine: true
+  },
+  {
+    id: 5,
+    productName: 'Guatemala Robusta',
+    type: 'Espresso',
+    price: '$15/lb',
+    hasCaffeine: true
+  },
+  {
+    id: 6,
+    productName: 'Hawaiian Decaf Espresso',
+    type: 'Espresso',
+    price: '$15/lb',
+    hasCaffeine: false
+  },
+  {
+    id: 7,
+    productName: 'Sumatran Robusta',
+    type: 'Espresso',
+    price: '$15/lb',
+    hasCaffeine: true
+  },
+  {
+    id: 8,
+    productName: 'Chamomile',
+    type: 'Herbal Tea',
+    price: '$10/lb',
+    hasCaffeine: false
+  },
+  {
+    id: 9,
+    productName: 'Lemon',
+    type: 'Herbal Tea',
+    price: '$10/lb',
+    hasCaffeine: false
+  },
+  {
+    id: 10,
+    productName: 'Mint',
+    type: 'Herbal Tea',
+    price: '$10/lb',
+    hasCaffeine: false
+  },
+  {
+    id: 11,
+    productName: 'Darjeeling',
+    type: 'Tea',
+    price: '$10/lb',
+    hasCaffeine: true
+  },
+  {
+    id: 12,
+    productName: 'Earl Grey',
+    type: 'Tea',
+    price: '$10/lb',
+    hasCaffeine: true
+  },
+  {
+    id: 13,
+    productName: 'Chai Tea',
+    type: 'Tea',
+    price: '$10/lb',
+    hasCaffeine: true
+  },
+  {
+    id: 14,
+    productName: 'Lavender',
+    type: 'Tea',
+    price: '$10/lb',
+    hasCaffeine: false
+  },
+  {
+    id: 15,
+    productName: 'Peppermint Tea',
+    type: 'Tea',
+    price: '$10/lb',
+    hasCaffeine: false
+  },
+  {
+    id: 16,
+    productName: 'Valerian Root Tea',
+    type: 'Tea',
+    price: '$10/lb',
+    hasCaffeine: false
+  },
+  {
+    id: 17,
+    productName: 'Cuban Arabica',
+    type: 'Coffee',
+    price: '$10/lb',
+    hasCaffeine: true
+  },
+  {
+    id: 18,
+    productName: 'Indonesian Arabica',
+    type: 'Coffee',
+    price: '$10/lb',
+    hasCaffeine: true
+  },
+  {
+    id: 19,
+    productName: 'Indonesian Robusta',
+    type: 'Espresso',
+    price: '$15/lb',
+    hasCaffeine: true
+  },
+  {
+    id: 20,
+    productName: 'English Breakfast',
+    type: 'Tea',
+    price: '$10/lb',
+    hasCaffeine: false
+  },
+  {
+    id: 21,
+    productName: 'Jasmine',
+    type: 'Tea',
+    price: '$10/lb',
+    hasCaffeine: false
+  },
+  {
+    id: 22,
+    productName: 'Oolong',
+    type: 'Tea',
+    price: '$10/lb',
+    hasCaffeine: false
+  },
+  {
+    id: 23,
+    productName: 'Passionflower',
+    type: 'Tea',
+    price: '$10/lb',
+    hasCaffeine: false
+  },
+  {
+    id: 24,
+    productName: 'Ginger',
+    type: 'Tea',
+    price: '$10/lb',
+    hasCaffeine: false
+  },
+  {
+    id: 25,
+    productName: 'Yerba Mate',
+    type: 'Tea',
+    price: '$10/lb',
+    hasCaffeine: true
+  },
+  {
+    id: 26,
+    productName: 'White Tea',
+    type: 'Tea',
+    price: '$10/lb',
+    hasCaffeine: false
+  },
+  {
+    id: 27,
+    productName: 'Hibiscus',
+    type: 'Tea',
+    price: '$10/lb',
+    hasCaffeine: false
+  },
+  {
+    id: 28,
+    productName: 'Blueberry',
+    type: 'Tea',
+    price: '$10/lb',
+    hasCaffeine: false
+  },
+  {
+    id: 29,
+    productName: 'Vanilla',
+    type: 'Tea',
+    price: '$10/lb',
+    hasCaffeine: false
+  },
+  {
+    id: 30,
+    productName: 'Blood Orange',
+    type: 'Tea',
+    price: '$10/lb',
+    hasCaffeine: false
+  },
+  {
+    id: 31,
+    productName: 'Spiced Apple',
+    type: 'Tea',
+    price: '$10/lb',
+    hasCaffeine: false
+  }
 ]
+
 
 module.exports = app;

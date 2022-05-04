@@ -94,8 +94,8 @@ app.post('/brews', (req, res) => {
           error: `Expected format: {productName: <String>, type: <String>, price: <String>}. You\'re missing a "${requiredParameter}" property.
         `
         })
-      }
     }
+  }
   if (brewError) {
     res.status(422).send({
       error: `Brew with productName ${brewError.productName} already exists`
@@ -114,217 +114,217 @@ app.locals.brews = [
     id: 1,
     productName: 'Brazilian Arabica',
     type: 'Coffee',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: true
   },
   {
     id: 2,
     productName: 'Columbian Arabica',
     type: 'Coffee',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: true
   },
   {
     id: 3,
     productName: 'Peruvian Arabica',
     type: 'Coffee',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: false
   },
   {
     id: 4,
     productName: 'Vietnam Robusta',
     type: 'Espresso',
-    price: '$15/lb',
+    price: 15,
     hasCaffeine: true
   },
   {
     id: 5,
     productName: 'Guatemala Robusta',
     type: 'Espresso',
-    price: '$15/lb',
+    price: 15,
     hasCaffeine: true
   },
   {
     id: 6,
     productName: 'Hawaiian Decaf Espresso',
     type: 'Espresso',
-    price: '$15/lb',
+    price: 15,
     hasCaffeine: false
   },
   {
     id: 7,
     productName: 'Sumatran Robusta',
     type: 'Espresso',
-    price: '$15/lb',
+    price: 15,
     hasCaffeine: true
   },
   {
     id: 8,
     productName: 'Chamomile',
     type: 'Herbal Tea',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: false
   },
   {
     id: 9,
     productName: 'Lemon',
     type: 'Herbal Tea',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: false
   },
   {
     id: 10,
     productName: 'Mint',
     type: 'Herbal Tea',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: false
   },
   {
     id: 11,
     productName: 'Darjeeling',
     type: 'Tea',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: true
   },
   {
     id: 12,
     productName: 'Earl Grey',
     type: 'Tea',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: true
   },
   {
     id: 13,
     productName: 'Chai Tea',
     type: 'Tea',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: true
   },
   {
     id: 14,
     productName: 'Lavender',
     type: 'Tea',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: false
   },
   {
     id: 15,
     productName: 'Peppermint Tea',
     type: 'Tea',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: false
   },
   {
     id: 16,
     productName: 'Valerian Root Tea',
     type: 'Tea',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: false
   },
   {
     id: 17,
     productName: 'Cuban Arabica',
     type: 'Coffee',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: true
   },
   {
     id: 18,
     productName: 'Indonesian Arabica',
     type: 'Coffee',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: true
   },
   {
     id: 19,
     productName: 'Indonesian Robusta',
     type: 'Espresso',
-    price: '$15/lb',
+    price: 15,
     hasCaffeine: true
   },
   {
     id: 20,
     productName: 'English Breakfast',
     type: 'Tea',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: false
   },
   {
     id: 21,
     productName: 'Jasmine',
     type: 'Tea',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: false
   },
   {
     id: 22,
     productName: 'Oolong',
     type: 'Tea',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: false
   },
   {
     id: 23,
     productName: 'Passionflower',
     type: 'Tea',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: false
   },
   {
     id: 24,
     productName: 'Ginger',
     type: 'Tea',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: false
   },
   {
     id: 25,
     productName: 'Yerba Mate',
     type: 'Tea',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: true
   },
   {
     id: 26,
     productName: 'White Tea',
     type: 'Tea',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: false
   },
   {
     id: 27,
     productName: 'Hibiscus',
     type: 'Tea',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: false
   },
   {
     id: 28,
     productName: 'Blueberry',
     type: 'Tea',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: false
   },
   {
     id: 29,
     productName: 'Vanilla',
     type: 'Tea',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: false
   },
   {
     id: 30,
     productName: 'Blood Orange',
     type: 'Tea',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: false
   },
   {
     id: 31,
     productName: 'Spiced Apple',
     type: 'Tea',
-    price: '$10/lb',
+    price: 10,
     hasCaffeine: false
   }
 ]

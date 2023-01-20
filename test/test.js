@@ -3,7 +3,6 @@ const chai = require("chai");
 const chaiHttp = require("chai-http");
 const { expect } = chai;
 const should = chai.should();
-chai.use(chaiHttp);
 
 describe('Coffee Server', () => {
   it('should be able to make a successful GET request', (done) => {

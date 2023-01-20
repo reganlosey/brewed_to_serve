@@ -1,4 +1,4 @@
-# [☕  Brewed To Serve 🍵](https://brewedtoserve.herokuapp.com/)
+# [☕  Brewed To Serve 🍵](https://brewed-to-serve.onrender.com/)
 
 ...get it?
 <sup style="font-size:5px">because it's a API and serves info about brewed drinks? I thought it was funny</sup>
@@ -8,7 +8,7 @@
 
 <h2 style="text-decoration: underline">Overview:</h2>
 
-[Brewed to Serve](https://brewedtoserve.herokuapp.com/) is an API built with Node and Express.js to host a variety of coffee and tea data.
+[Brewed to Serve](https://brewed-to-serve.onrender.com/) is an API built with Node and Express.js to host a variety of coffee and tea data.
 This was a super fun side project and a great opportunity for me to practice my abilities writing backend Javascript.
 I'd had some experience creating an API for a group project when I was in school but I enjoyed the challenge of writing one myself and having a lot of creative freedom.
 
@@ -25,7 +25,7 @@ I'd had some experience creating an API for a group project when I was in school
 The base path to access the API is:
 
 ```
-https://brewedtoserve.herokuapp.com/{query}
+https://brewed-to-serve.onrender.com/{query}
 ```
 Where `query` is replaced with one of the following endpoints:
 
